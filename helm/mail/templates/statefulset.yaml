@@ -117,7 +117,7 @@ spec:
   volumeClaimTemplates:
     - metadata:
         name: {{ $fullName }}
-        namespace: infrastructure
+        namespace: {{ .Release.Namespace | quote }}
       spec:
         accessModes: {{- toYaml .Values.persistence.accessModes | nindent 10 }}
         {{- if (eq "-" .Values.persistence.storageClass) }}
